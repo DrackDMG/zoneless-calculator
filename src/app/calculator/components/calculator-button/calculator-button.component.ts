@@ -16,8 +16,12 @@ export class CalculatorButtonComponent{
     transform: (value: boolean | string) => value === '' || value === 'true'
   });
 
-  // @HostBinding('class.is-command') get commandStyle(){
-  //   return this.isComand();
-  // }
+  public doubleSize = input(false, {
+    transform: (value: boolean | string) => value === '' || value === 'true'
+  });
+
+   @HostBinding('class.w-2/4') get doubleSizeStyle(){
+     return this.doubleSize();
+   }
 
 }
