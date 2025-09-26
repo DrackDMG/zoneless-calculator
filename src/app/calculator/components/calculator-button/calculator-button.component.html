@@ -2,7 +2,7 @@
     <button
     #button (click)="handleClick()"
     [class.is-command]="isComand()"
-
+    [class.is-pressed]="isPressed()"
     class="button">
       <ng-content />
     </button>
