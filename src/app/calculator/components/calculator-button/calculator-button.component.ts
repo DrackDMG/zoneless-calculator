@@ -7,7 +7,10 @@ import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, input, OnI
   styleUrl: './calculator-button.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host:{
-    class: 'w-1/4 border-r border-b border-indigo-400'
+    class: 'border-r border-b border-indigo-400',
+    '[class.w-2/4]': 'doubleSize()',
+    '[class.w-1/4]': '!doubleSize()'
+
   },
   //encapsulation: ViewEncapsulation.None
 })
@@ -27,9 +30,9 @@ export class CalculatorButtonComponent{
     transform: (value: boolean | string) => value === '' || value === 'true'
   });
 
-   @HostBinding('class.w-2/4') get doubleSizeStyle(){
-     return this.doubleSize();
-   }
+  //  @HostBinding('class.w-2/4') get doubleSizeStyle(){
+  //    return this.doubleSize();
+  //  }
 
    handleClick(){
     if(!this.contentValue()?.nativeElement){
@@ -49,6 +52,6 @@ export class CalculatorButtonComponent{
     this.isPressed.set(true);
     setTimeout(() => {
       this.isPressed.set(false);
-    }, 200);
+    }, 100);
   }
 }

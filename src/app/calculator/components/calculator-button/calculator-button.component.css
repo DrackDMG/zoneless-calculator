@@ -14,3 +14,20 @@
   background-color: #4f46e5;
 }
 
+.button{
+  height: 64px;
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: rgb(255, 255, 255);
+}
+
+.button:hover{
+  background-color: rgba(99, 102, 241, 0.2);
+  opacity: 1;
+}
+
+.button:focus{
+  outline: none;
+}
+
