@@ -22,8 +22,8 @@ export class CalculatorService {
     }
 
     if(value === '='){
-      //TODO
       console.log('calcular resultado');
+      this.calculateResult();
       return;
     }
 
@@ -37,6 +37,10 @@ export class CalculatorService {
     //TODO: revisar cuando vayan a ser negativos
     if(value === 'Backspace'){
       if(this.resulText() === '0') return;
+      if(this.resulText().includes('-') && this.resulText().length === 2){
+        this.resulText.set('0');
+        return;
+      }
       if(this.resulText().length === 1){
         this.resulText.set('0');
         return;
@@ -46,6 +50,7 @@ export class CalculatorService {
     }
 
     if(operators.includes(value)){
+      this.calculateResult();
       this.lastOperator.set(value);
       this.subResulText.set(this.resulText());
       this.resulText.set('0');
@@ -91,6 +96,31 @@ export class CalculatorService {
       this.resulText.update(current => current + value)
       return;
     }
+  }
+
+  public calculateResult(){
+    const number1 = parseFloat(this.subResulText());
+    const number2 = parseFloat(this.resulText());
+    let result = 0;
+
+    switch(this.lastOperator()){
+      case '+':
+        result = number1 + number2;
+        break;
+      case '-':
+        result = number1 - number2;
+        break;
+      case 'x':
+        result = number1 * number2;
+        break;
+      case '÷':
+        result = number1 / number2;
+        break;
+    }
+
+    this.resulText.set(result.toString());
+    this.subResulText.set('0');
+
   }
 
 }
