@@ -35,4 +35,19 @@ describe('App', () => {
     //expect(compiled.querySelector('router-outlet')).not.toBeNull();
     expect(compiled.querySelector('router-outlet')).toBeTruthy();
    })
+
+   it ('should render routerOutlet wrappede with ccs class', () => {
+    const divElement = compiled.querySelector('div');
+    const ccsClass = 'min-w-screen min-h-screen bg-slate-500 flex items-center justify-center px-5 py-5'.split(' ');
+    const ccsClassDiv = divElement?.classList.value.split(' ');
+    expect(divElement).toBeTruthy();
+    // divElement?.classList.forEach((item) => {
+    //   expect(ccsClass).toContain(item);
+    // });
+    ccsClass.forEach((item) => {
+      expect(ccsClassDiv).toContain(item);
+    })
+
+    console.log(divElement);
+   })
 });
