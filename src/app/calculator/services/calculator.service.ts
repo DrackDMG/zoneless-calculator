@@ -17,12 +17,12 @@ export class CalculatorService {
 
   public constructorNumber(value: string): void{
     if(![...numbers, ...operators, ...specialOperators].includes(value)){
-      console.log('Valor no permitido', value);
+      //console.log('Valor no permitido', value);
       return;
     }
 
     if(value === '='){
-      console.log('calcular resultado');
+      //console.log('calcular resultado');
       this.calculateResult();
       return;
     }
@@ -58,7 +58,7 @@ export class CalculatorService {
     }
 
     if(this.resulText().length >= 7){
-      console.log('limite');
+      //console.log('limite');
       return;
     }
 
